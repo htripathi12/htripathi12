@@ -2,8 +2,8 @@ name: Generate contribution snake
 
 on:
   schedule:
-    - cron: "0 3 * * *"   # every day at 03:00 UTC
-  workflow_dispatch:
+    - cron: '25 2 * 3-11 *'
+    - cron: '25 3 * 12,1,2 *'
 
 jobs:
   build:
