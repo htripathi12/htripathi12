@@ -1,31 +1,34 @@
 name: Generate contribution snake
 
+# ─────────── triggers ───────────
 on:
-  workflow_dispatch:
-  push:
+  workflow_dispatch:        # manual “Run workflow”
+  push:                     # any push to main
   schedule:
-    - cron: '25 2 * 3-11 *'   # 10:25 PM EDT
-    - cron: '25 3 * 12,1,2 *' # 10:25 PM EST
+    - cron: '25 2 * 3-11 *'   # 10 :25 PM EDT
+    - cron: '25 3 * 12,1,2 *' # 10 :25 PM EST
+
+# 👇 give this workflow write access so it can push
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # 1️⃣  clone your repo so .git exists
-      - name: Checkout
-        uses: actions/checkout@v4
+      # 1️⃣  check out the repo so .git exists
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0          # full history (needed by snk)
+          fetch-depth: 0          # full history (snk needs it)
 
-      # 2️⃣  create the SVG
+      # 2️⃣  generate the SVG
       - uses: Platane/snk@v3
         with:
           github_user_name: htripathi12
           outputs: |
             dist/github-contribution-grid-snake.svg
 
-      # 3️⃣  commit & push the file to the output branch
+      # 3️⃣  commit + push to the current branch (main)
       - name: Commit and push
         uses: EndBug/add-and-commit@v9
         with:
@@ -33,4 +36,3 @@ jobs:
           author_email: actions@github.com
           message: "chore: update contribution snake"
           add: "dist/github-contribution-grid-snake.svg"
-          branch: output             # create/update the output branch
