@@ -1,0 +1,24 @@
+name: Generate contribution snake
+
+on:
+  schedule:
+    - cron: "0 3 * * *"   # every day at 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Platane/snk@v3   # ↙ generates the SVG
+        with:
+          github_user_name: htripathi12
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+
+      - name: Commit & push
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: GitHub Actions
+          author_email: actions@github.com
+          message: "chore: update contribution snake"
+          add: "dist/github-contribution-grid-snake.svg"
