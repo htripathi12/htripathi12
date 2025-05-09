@@ -7,6 +7,17 @@
 - ✉️ Reach me at **tripathihersh@gmail.com** or connect on [LinkedIn](https://www.linkedin.com/in/hersh-tripathi-663a47225/)  
 
 
+<!-- 🐍 Contribution Snake -->
+<p align="center">
+  <img alt="snake animation" src="https://raw.githubusercontent.com/htripathi12/htripathi12/output/github-contribution-grid-snake.svg">
+</p>
+
+<!-- 🐍 Contribution Snake -->
+<p align="center">
+  <img alt="snake animation" src="https://raw.githubusercontent.com/htripathi12/htripathi12/output/github-contribution-grid-snake.svg">
+</p>
+
+
 <!-- 📊 Stats cards -->
 <p align="center">
   <!-- Total commits & other stats -->
