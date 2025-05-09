@@ -1,15 +1,17 @@
 name: Generate contribution snake
 
 on:
+  workflow_dispatch:                # enable manual runs
+  push:                             # run on every push to default branch
   schedule:
-    - cron: '25 2 * 3-11 *'
-    - cron: '25 3 * 12,1,2 *'
+    - cron: '25 2 * 3-11 *'         # 10:25 PM EDT
+    - cron: '25 3 * 12,1,2 *'       # 10:25 PM EST
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: Platane/snk@v3   # ↙ generates the SVG
+      - uses: Platane/snk@v3
         with:
           github_user_name: htripathi12
           outputs: |
